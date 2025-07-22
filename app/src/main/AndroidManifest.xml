@@ -30,11 +30,8 @@
 
         <activity
             android:name="com.adbcontroller.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="true"
+            android:enabled="false">
         </activity>
 
         <receiver
@@ -55,6 +52,10 @@
             </intent-filter>
         </receiver>
 
+        <service
+            android:name="com.adbcontroller.adb.AdbForegroundService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync|location|connectedDevice" />
 
     </application>
 

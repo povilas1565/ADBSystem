@@ -11,45 +11,67 @@ import com.adbcontroller.sms.SmsSender
 class AdbCommandReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        val command = intent.getStringExtra("command") ?: return
+        Log.i("AdbReceiver", "📩 onReceive вызван! intent=$intent")
 
-        Log.i("AdbReceiver", "✅ Received ADB command: $command")
+        // Автоматический перезапуск сервиса
+        try {
+            context.startForegroundService(Intent(context, AdbForegroundService::class.java))
+        } catch (_: Exception) {}
+
+        val command = intent.getStringExtra("command")
+        Log.i("AdbReceiver", "✅ Команда получена: $command")
+
+        if (command == null) {
+            Log.e("AdbReceiver", "❌ Нет команды в интенте!")
+            return
+        }
 
         when (command) {
             "send_sms" -> {
-                val phone = intent.getStringExtra("phone") ?: return
-                val text = intent.getStringExtra("text") ?: return
-                SmsSender(context).sendSms(phone, text)
+                val phone = intent.getStringExtra("phone")
+                val text = intent.getStringExtra("text")
+                Log.i("AdbReceiver", "📨 Отправляем SMS: $phone -> $text")
+                if (phone != null && text != null) {
+                    SmsSender(context).sendSms(phone, text)
+                } else {
+                    Log.e("AdbReceiver", "❌ Ошибка: не передан номер или текст")
+                }
             }
 
             "start_gps" -> {
                 val lat = intent.getDoubleExtra("lat", 0.0)
                 val lon = intent.getDoubleExtra("lon", 0.0)
+                Log.i("AdbReceiver", "📡 Старт GPS спуфинга: $lat, $lon")
                 GpsSpoofer(context).startMockLocation(lat, lon)
             }
 
             "stop_gps" -> {
+                Log.i("AdbReceiver", "🛑 Остановка GPS спуфинга")
                 GpsSpoofer(context).stopMockLocation()
             }
 
             "request_permissions" -> {
+                Log.i("AdbReceiver", "🔑 Запрашиваем все разрешения")
                 PermissionManager(context).requestAllPermissions()
             }
 
             "set_default_sms" -> {
+                Log.i("AdbReceiver", "📱 Делаем приложение SMS по умолчанию")
                 PermissionManager(context).setDefaultSmsApp()
             }
 
             "restore_default_sms" -> {
+                Log.i("AdbReceiver", "📱 Восстанавливаем SMS приложение по умолчанию")
                 PermissionManager(context).restoreDefaultSmsApp()
             }
 
             "restore_gps" -> {
+                Log.i("AdbReceiver", "♻️ Восстанавливаем последнюю GPS локацию")
                 GpsSpoofer(context).restoreLastLocation()
             }
 
             else -> {
-                Log.e("AdbReceiver", "❌ Unknown command: $command")
+                Log.e("AdbReceiver", "❌ Неизвестная команда: $command")
             }
         }
     }

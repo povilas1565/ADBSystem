@@ -1,12 +1,8 @@
 package com.adbcontroller.permissions
 
 import android.Manifest
-import android.app.role.RoleManager
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
-import android.provider.Telephony
 import android.util.Log
 import androidx.core.content.ContextCompat
 
