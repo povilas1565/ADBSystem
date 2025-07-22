@@ -19,6 +19,7 @@ class GpsSpoofer(private val context: Context) {
         context.getSharedPreferences("gps_spoofer", Context.MODE_PRIVATE)
 
     fun startMockLocation(lat: Double, lon: Double) {
+        Log.w("GpsSpoofer", "🚀 ВХОД В startMockLocation -> $lat , $lon")
         try {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
                 Log.e("GpsSpoofer", "❌ Works only on Android 12+")
@@ -77,6 +78,7 @@ class GpsSpoofer(private val context: Context) {
     }
 
     fun restoreLastLocation() {
+        Log.w("GpsSpoofer", "🚀 ВХОД В restoreLastLocation")
         val lat = prefs.getFloat("last_lat", 0f).toDouble()
         val lon = prefs.getFloat("last_lon", 0f).toDouble()
         if (lat != 0.0 && lon != 0.0) {
@@ -86,6 +88,7 @@ class GpsSpoofer(private val context: Context) {
     }
 
     fun stopMockLocation() {
+        Log.w("GpsSpoofer", "🚀 ВХОД В stopMockLocation")
         try {
             locationManager.setTestProviderEnabled(provider, false)
             locationManager.removeTestProvider(provider)

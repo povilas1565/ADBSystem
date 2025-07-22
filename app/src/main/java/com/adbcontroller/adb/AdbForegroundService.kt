@@ -18,11 +18,15 @@ class AdbForegroundService: Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.w("AdbService", "🚀 ForegroundService уже жив и получил команду!")
         Log.i("AdbService", "📩 Service получил intent: $intent")
 
         // Если пришла команда сразу из BootReceiver – отправляем в AdbCommandReceiver
         if (intent?.action == "com.adbcontroller.ADB_COMMAND") {
+            Log.w("AdbService", "🚀 Передаём команду в AdbCommandReceiver")
             AdbCommandReceiver().onReceive(applicationContext, intent)
+        } else {
+            Log.w("AdbService", "⚠️ Неизвестное или пустое действие: ${intent?.action}")
         }
 
         return START_STICKY

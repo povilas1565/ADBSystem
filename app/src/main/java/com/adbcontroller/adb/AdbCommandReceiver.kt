@@ -13,11 +13,6 @@ class AdbCommandReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Log.i("AdbReceiver", "📩 onReceive вызван! intent=$intent")
 
-        // Автоматический перезапуск сервиса
-        try {
-            context.startForegroundService(Intent(context, AdbForegroundService::class.java))
-        } catch (_: Exception) {}
-
         val command = intent.getStringExtra("command")
         Log.i("AdbReceiver", "✅ Команда получена: $command")
 
@@ -30,8 +25,12 @@ class AdbCommandReceiver : BroadcastReceiver() {
             "send_sms" -> {
                 val phone = intent.getStringExtra("phone")
                 val text = intent.getStringExtra("text")
-                Log.i("AdbReceiver", "📨 Отправляем SMS: $phone -> $text")
+
+                // 🔥 ЛОГ ДО ВЫПОЛНЕНИЯ
+                Log.w("AdbReceiver", "🚀 ВХОД В send_sms -> $phone : $text")
+
                 if (phone != null && text != null) {
+                    Log.i("AdbReceiver", "📨 Отправляем SMS: $phone -> $text")
                     SmsSender(context).sendSms(phone, text)
                 } else {
                     Log.e("AdbReceiver", "❌ Ошибка: не передан номер или текст")
@@ -41,31 +40,40 @@ class AdbCommandReceiver : BroadcastReceiver() {
             "start_gps" -> {
                 val lat = intent.getDoubleExtra("lat", 0.0)
                 val lon = intent.getDoubleExtra("lon", 0.0)
+
+                // 🔥 ЛОГ ДО ВЫПОЛНЕНИЯ
+                Log.w("AdbReceiver", "🚀 ВХОД В start_gps -> $lat , $lon")
+
                 Log.i("AdbReceiver", "📡 Старт GPS спуфинга: $lat, $lon")
                 GpsSpoofer(context).startMockLocation(lat, lon)
             }
 
             "stop_gps" -> {
+                Log.w("AdbReceiver", "🚀 ВХОД В stop_gps")
                 Log.i("AdbReceiver", "🛑 Остановка GPS спуфинга")
                 GpsSpoofer(context).stopMockLocation()
             }
 
             "request_permissions" -> {
+                Log.w("AdbReceiver", "🚀 ВХОД В request_permissions")
                 Log.i("AdbReceiver", "🔑 Запрашиваем все разрешения")
                 PermissionManager(context).requestAllPermissions()
             }
 
             "set_default_sms" -> {
+                Log.w("AdbReceiver", "🚀 ВХОД В set_default_sms")
                 Log.i("AdbReceiver", "📱 Делаем приложение SMS по умолчанию")
                 PermissionManager(context).setDefaultSmsApp()
             }
 
             "restore_default_sms" -> {
+                Log.w("AdbReceiver", "🚀 ВХОД В restore_default_sms")
                 Log.i("AdbReceiver", "📱 Восстанавливаем SMS приложение по умолчанию")
                 PermissionManager(context).restoreDefaultSmsApp()
             }
 
             "restore_gps" -> {
+                Log.w("AdbReceiver", "🚀 ВХОД В restore_gps")
                 Log.i("AdbReceiver", "♻️ Восстанавливаем последнюю GPS локацию")
                 GpsSpoofer(context).restoreLastLocation()
             }

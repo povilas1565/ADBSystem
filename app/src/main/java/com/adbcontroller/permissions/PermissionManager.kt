@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 class PermissionManager(private val context: Context) {
 
     fun requestAllPermissions() {
+        Log.w("PermissionManager", "🚀 ВХОД В requestAllPermissions")
         val permissions = listOf(
             Manifest.permission.SEND_SMS,
             Manifest.permission.READ_SMS,
@@ -42,6 +43,7 @@ class PermissionManager(private val context: Context) {
     }
 
     fun setDefaultSmsApp() {
+        Log.w("PermissionManager", "🚀 ВХОД В setDefaultSmsApp")
         try {
             val process = Runtime.getRuntime().exec(
                 arrayOf(
@@ -61,6 +63,7 @@ class PermissionManager(private val context: Context) {
     }
 
     fun restoreDefaultSmsApp(defaultSmsPackage: String = "com.android.messaging") {
+        Log.w("PermissionManager", "🚀 ВХОД В restoreDefaultSmsApp")
         try {
             Runtime.getRuntime().exec(
                 arrayOf(
