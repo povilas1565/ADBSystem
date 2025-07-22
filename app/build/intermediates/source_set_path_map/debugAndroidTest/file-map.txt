@@ -1,0 +1,4 @@
+com.adbcontroller.test.app-androidTest-0 C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\build\generated\res\resValues\androidTest\debug
+com.adbcontroller.test.app-mergeDebugAndroidTestResources-1 C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.adbcontroller.test.app-mergeDebugAndroidTestResources-2 C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.adbcontroller.test.app-merged_res-3 C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\build\intermediates\merged_res\debugAndroidTest

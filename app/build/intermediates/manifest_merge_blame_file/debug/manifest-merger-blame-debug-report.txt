@@ -1,0 +1,149 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.adbcontroller"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="31"
+9        android:targetSdkVersion="33" />
+10
+11    <!-- Разрешения -->
+12    <uses-feature
+12-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:7:5-8:36
+13        android:name="android.hardware.telephony"
+13-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:7:19-60
+14        android:required="false" />
+14-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:8:9-33
+15
+16    <uses-permission android:name="android.permission.SEND_SMS" />
+16-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:9:5-67
+16-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:9:22-64
+17    <uses-permission android:name="android.permission.READ_SMS" />
+17-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:10:5-67
+17-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:10:22-64
+18    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+18-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:11:5-70
+18-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:11:22-67
+19    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+19-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:12:5-79
+19-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:12:22-76
+20    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+20-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:13:5-81
+20-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:13:22-78
+21    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+21-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:14:5-81
+21-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:14:22-78
+22    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+22-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:15:5-16:60
+22-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:15:22-76
+23    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+23-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:17:5-18:47
+23-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:17:22-77
+24
+25    <permission
+25-->[androidx.core:core:1.9.0] C:\Users\Paul156551\.gradle\caches\transforms-3\110af4b4fd40caa2306c84f9abb2ddf3\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+26        android:name="com.adbcontroller.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+26-->[androidx.core:core:1.9.0] C:\Users\Paul156551\.gradle\caches\transforms-3\110af4b4fd40caa2306c84f9abb2ddf3\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+27        android:protectionLevel="signature" />
+27-->[androidx.core:core:1.9.0] C:\Users\Paul156551\.gradle\caches\transforms-3\110af4b4fd40caa2306c84f9abb2ddf3\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+28
+29    <uses-permission android:name="com.adbcontroller.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+29-->[androidx.core:core:1.9.0] C:\Users\Paul156551\.gradle\caches\transforms-3\110af4b4fd40caa2306c84f9abb2ddf3\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+29-->[androidx.core:core:1.9.0] C:\Users\Paul156551\.gradle\caches\transforms-3\110af4b4fd40caa2306c84f9abb2ddf3\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+30
+31    <application
+31-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:21:5-59:19
+32        android:allowBackup="true"
+32-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:22:9-35
+33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+33-->[androidx.core:core:1.9.0] C:\Users\Paul156551\.gradle\caches\transforms-3\110af4b4fd40caa2306c84f9abb2ddf3\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+34        android:dataExtractionRules="@xml/data_extraction_rules"
+34-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:23:9-65
+35        android:debuggable="true"
+36        android:extractNativeLibs="false"
+37        android:fullBackupContent="@xml/backup_rules"
+37-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:24:9-54
+38        android:icon="@mipmap/ic_launcher"
+38-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:25:9-43
+39        android:label="@string/app_name"
+39-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:26:9-41
+40        android:roundIcon="@mipmap/ic_launcher_round"
+40-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:27:9-54
+41        android:supportsRtl="true"
+41-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:28:9-35
+42        android:theme="@style/Theme.ADBSystem" >
+42-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:29:9-47
+43        <activity
+43-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:31:9-38:20
+44            android:name="com.adbcontroller.MainActivity"
+44-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:32:13-58
+45            android:exported="true" >
+45-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:33:13-36
+46            <intent-filter>
+46-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:34:13-37:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:35:17-69
+47-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:35:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:36:17-77
+49-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:36:27-74
+50            </intent-filter>
+51        </activity>
+52
+53        <receiver
+53-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:40:9-47:20
+54            android:name="com.adbcontroller.adb.AdbCommandReceiver"
+54-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:41:13-68
+55            android:enabled="true"
+55-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:42:13-35
+56            android:exported="true" >
+56-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:43:13-36
+57            <intent-filter>
+57-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:44:13-46:29
+58                <action android:name="com.adbcontroller.ADB_COMMAND" />
+58-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:45:17-72
+58-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:45:25-69
+59            </intent-filter>
+60        </receiver>
+61        <receiver
+61-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:49:9-56:20
+62            android:name="com.adbcontroller.adb.BootReceiver"
+62-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:50:13-62
+63            android:enabled="true"
+63-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:51:13-35
+64            android:exported="true" >
+64-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:52:13-36
+65            <intent-filter>
+65-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:53:13-55:29
+66                <action android:name="android.intent.action.BOOT_COMPLETED" />
+66-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:54:17-79
+66-->C:\Users\Paul156551\AndroidStudioProjects\ADBSystem\app\src\main\AndroidManifest.xml:54:25-76
+67            </intent-filter>
+68        </receiver>
+69
+70        <provider
+70-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Paul156551\.gradle\caches\transforms-3\5972569a561eccf44a8bb2de8c082efa\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+71            android:name="androidx.startup.InitializationProvider"
+71-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Paul156551\.gradle\caches\transforms-3\5972569a561eccf44a8bb2de8c082efa\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+72            android:authorities="com.adbcontroller.androidx-startup"
+72-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Paul156551\.gradle\caches\transforms-3\5972569a561eccf44a8bb2de8c082efa\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+73            android:exported="false" >
+73-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Paul156551\.gradle\caches\transforms-3\5972569a561eccf44a8bb2de8c082efa\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+74            <meta-data
+74-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Paul156551\.gradle\caches\transforms-3\5972569a561eccf44a8bb2de8c082efa\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+75                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+75-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Paul156551\.gradle\caches\transforms-3\5972569a561eccf44a8bb2de8c082efa\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+76                android:value="androidx.startup" />
+76-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Paul156551\.gradle\caches\transforms-3\5972569a561eccf44a8bb2de8c082efa\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+77            <meta-data
+77-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Paul156551\.gradle\caches\transforms-3\a3fd0ff0b592fc6fc69102cd690706eb\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+78                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+78-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Paul156551\.gradle\caches\transforms-3\a3fd0ff0b592fc6fc69102cd690706eb\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+79                android:value="androidx.startup" />
+79-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Paul156551\.gradle\caches\transforms-3\a3fd0ff0b592fc6fc69102cd690706eb\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+80        </provider>
+81    </application>
+82
+83</manifest>
