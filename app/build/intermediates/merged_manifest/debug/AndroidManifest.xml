@@ -19,8 +19,13 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Нужны для GPS-спуфинга -->
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+
+    <!-- Foreground Service для Android 9+ -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <permission
         android:name="com.adbcontroller.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -40,12 +45,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ADBSystem" >
+
+        <!-- Активити можно оставить выключенной -->
         <activity
             android:name="com.adbcontroller.MainActivity"
             android:enabled="false"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
 
+        <!-- Ресивер для ADB команд -->
         <receiver
             android:name="com.adbcontroller.adb.AdbCommandReceiver"
             android:enabled="true"
@@ -54,6 +61,8 @@
                 <action android:name="com.adbcontroller.ADB_COMMAND" />
             </intent-filter>
         </receiver>
+
+        <!-- Автозапуск при перезагрузке -->
         <receiver
             android:name="com.adbcontroller.adb.BootReceiver"
             android:enabled="true"
@@ -63,9 +72,26 @@
             </intent-filter>
         </receiver>
 
+        <!-- Новый ресивер после установки/обновления -->
+        <receiver
+            android:name="com.adbcontroller.adb.InstallReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data
+                    android:path="com.adbcontroller"
+                    android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ForegroundService ДОЛЖЕН БЫТЬ exported=true -->
         <service
             android:name="com.adbcontroller.adb.AdbForegroundService"
-            android:exported="false"
+            android:enabled="true"
+            android:exported="true"
             android:foregroundServiceType="dataSync|location|connectedDevice" />
 
         <provider
