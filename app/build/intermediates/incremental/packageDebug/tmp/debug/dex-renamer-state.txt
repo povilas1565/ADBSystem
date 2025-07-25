@@ -1,4 +1,4 @@
-#Thu Jul 24 00:20:15 MSK 2025
+#Fri Jul 25 20:00:01 MSK 2025
 base.0=C\:\\Users\\Paul156551\\AndroidStudioProjects\\ADBSystem\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\Paul156551\\AndroidStudioProjects\\ADBSystem\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=C\:\\Users\\Paul156551\\AndroidStudioProjects\\ADBSystem\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex

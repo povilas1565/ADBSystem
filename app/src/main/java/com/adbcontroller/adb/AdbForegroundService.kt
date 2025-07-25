@@ -12,79 +12,63 @@ import com.adbcontroller.gps.GpsSpoofer
 import com.adbcontroller.permissions.PermissionManager
 import com.adbcontroller.sms.SmsSender
 
-class AdbForegroundService: Service() {
+class AdbForegroundService : Service() {
 
     override fun onCreate() {
         super.onCreate()
         startForeground(1, createNotification())
-        Log.i("AdbService", "✅ ForegroundService запущен")
+        Log.i("AdbService", "✅ ForegroundService запущен и готов к командам")
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Log.w("AdbService", "🚀 ForegroundService уже жив и получил команду!")
-        Log.i("AdbService", "📩 Service получил intent: $intent")
+        Log.i("AdbService", "🚀 Получена команда через ADB")
 
-        if (intent?.action == "com.adbcontroller.ADB_COMMAND") {
-            handleCommand(intent)
-        } else {
-            Log.w("AdbService", "⚠️ Неизвестное или пустое действие: ${intent?.action}")
-        }
-
-        return START_STICKY
-    }
-
-    private fun handleCommand(intent: Intent) {
-        val command = intent.getStringExtra("command")
-        Log.i("AdbService", "✅ Выполняем команду: $command")
+        val command = intent?.getStringExtra("command")
+        Log.w("AdbService", "📩 command=$command")
 
         when (command) {
             "send_sms" -> {
                 val phone = intent.getStringExtra("phone")
                 val text = intent.getStringExtra("text")
-                if (phone != null && text != null) {
-                    Log.w("AdbService", "📨 Отправляем SMS: $phone -> $text")
+                if (!phone.isNullOrEmpty() && !text.isNullOrEmpty()) {
                     SmsSender(this).sendSms(phone, text)
                 } else {
-                    Log.e("AdbService", "❌ Ошибка: не передан номер или текст")
+                    Log.e("AdbService", "❌ Нет номера или текста!")
                 }
             }
 
             "start_gps" -> {
                 val lat = intent.getDoubleExtra("lat", 0.0)
                 val lon = intent.getDoubleExtra("lon", 0.0)
-                Log.w("AdbService", "📡 Старт GPS спуфинга: $lat, $lon")
                 GpsSpoofer(this).startMockLocation(lat, lon)
             }
 
             "stop_gps" -> {
-                Log.w("AdbService", "🛑 Остановка GPS спуфинга")
                 GpsSpoofer(this).stopMockLocation()
             }
 
             "request_permissions" -> {
-                Log.w("AdbService", "🔑 Запрашиваем все разрешения")
                 PermissionManager(this).requestAllPermissions()
             }
 
             "set_default_sms" -> {
-                Log.w("AdbService", "📱 Делаем приложение SMS по умолчанию")
                 PermissionManager(this).setDefaultSmsApp()
             }
 
             "restore_default_sms" -> {
-                Log.w("AdbService", "📱 Восстанавливаем SMS приложение по умолчанию")
                 PermissionManager(this).restoreDefaultSmsApp()
             }
 
             "restore_gps" -> {
-                Log.w("AdbService", "♻️ Восстанавливаем последнюю GPS локацию")
                 GpsSpoofer(this).restoreLastLocation()
             }
 
             else -> {
-                Log.e("AdbService", "❌ Неизвестная команда: $command")
+                Log.e("AdbService", "❌ Неизвестная команда!")
             }
         }
+
+        return START_NOT_STICKY
     }
 
     private fun createNotification(): Notification {
@@ -101,7 +85,7 @@ class AdbForegroundService: Service() {
 
         return Notification.Builder(this, channelId)
             .setContentTitle("ADB Controller")
-            .setContentText("Сервис запущен и ждёт ADB команд")
+            .setContentText("Сервис запущен и ждёт команды")
             .setSmallIcon(android.R.drawable.ic_menu_manage)
             .setOngoing(true)
             .build()
